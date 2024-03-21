@@ -1,6 +1,7 @@
 'use strict';
 // declairing varaibles
 let scores = [0, 0];
+let result = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -22,10 +23,14 @@ const current1El = document.getElementById('current--1');
 const player0Score = document.getElementById('score--0');
 const player1Score = document.getElementById('score--1');
 
+const btnReplay = document.querySelector('.btn--play-again');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+// implement total result
+const result0El = document.getElementById('#result--0');
+const result1El = document.getElementById('#result--1');
 //const holdEl = document.querySelector('.btn--hold');
 
 // starting conditions
@@ -53,11 +58,20 @@ const initial = function () {
   current1El.textContent = currentScore;
 
   diceEl.classList.add('hidden');
-  document
-    .querySelector(`.player--${activePlayer}`)
-    .classList.remove('player--winner');
+
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
+};
+
+const newGame = function () {
+  result = [0, 0];
+  document.getElementById(`result--0`).textContent = result[0];
+  document.getElementById(`result--0`).textContent = result[1];
+  // result0El.textContent = result[0];
+  // result1El.textContent = result[1];
+  initial();
 };
 
 // implementing the function for switching player
@@ -82,6 +96,14 @@ btnHold.addEventListener('click', function () {
     if (scores[activePlayer] > 30) {
       playing = false;
       diceEl.classList.add('hidden');
+      result[activePlayer]++;
+      document.getElementById(`result--${activePlayer}`).textContent =
+        result[activePlayer];
+
+      currentScore = 0;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
@@ -115,4 +137,5 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
-btnNew.addEventListener('click', initial);
+btnReplay.addEventListener('click', initial);
+btnNew.addEventListener('click', newGame);

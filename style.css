@@ -80,20 +80,24 @@ main {
   opacity: 1;
 }
 
-/* .result {
-  position: absolute;
+.result {
+  /* position: absolute; */
   left: 290px;
-  top: 28rem;
-  width: 10%;
+  top: 29rem;
+  width: 60%;
   height: 60px;
-  background-color: #55091d;
+  background-color: #d96081;
+  margin-bottom: 20px;
   opacity: 0.8;
   border-radius: 6px;
   color: #fff;
   padding: 0.5rem;
   text-align: center;
   transition: all 0.75s;
-} */
+}
+.result-score {
+  font-size: 30px;
+}
 
 .current {
   background-color: #c7365f;
@@ -147,8 +151,12 @@ main {
   margin-right: 0.7rem;
 }
 
+.btn--play-again {
+  top: 5.5rem;
+  width: fit-content;
+}
 .btn--new {
-  top: 4rem;
+  top: 0.3rem;
 }
 .btn--roll {
   top: 39.3rem;
